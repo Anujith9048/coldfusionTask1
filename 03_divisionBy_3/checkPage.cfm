@@ -11,14 +11,12 @@
         <input type="submit" value="Submit">
     </form>
 
+    <cfset result="">
+
     <cfif structKeyExists(form,"num")>
-        <cfset num = #num#>
         <cfset checkObj = createObject("component","components.check")>
         <cfset result = checkObj.checkNumber(num)>
     </cfif>
     <p><cfoutput>#result#</cfoutput></p>
-    <cfif isNull(num)>
-        <p><cfoutput>Enter a number</cfoutput></p>
-    </cfif>
 </body>
 </html>
