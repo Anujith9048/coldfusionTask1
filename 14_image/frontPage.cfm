@@ -21,7 +21,7 @@
 
 <body>
   <cfoutput>
-    <form class="col-5 ms-auto me-auto mt-5 " action="frontPage.cfm" method="post"  enctype="multipart/form-data">
+    <form class="col-5 ms-auto me-auto mt-5 " action="" method="post"  enctype="multipart/form-data">
       <h3>Enter title and<small class="text-muted"> Upload photo</small></h3>
 
       <div class="mb-3">
@@ -31,7 +31,7 @@
 
       <div class="mb-3">
         <label for="title" class="form-label">Image description</label>
-        <input type="text" class="form-control" id="description" name="title">
+        <input type="text" class="form-control" id="description" name="description">
       </div>
 
       <div class="mb-3">
@@ -45,16 +45,18 @@
 
 
  </cfoutput>
-  <cfparam name="form.image" default="">
-  <cfparam name="form.title" default="">
-  <cfparam name="form.description" default="">
-  <cfset local.maxSize = 1* 1024 *1024>
 
+  
   <cfset local.result ="">
+  
   <cfif structKeyExists(form, "submit" )>
     <cfset fileProcessor  = createObject("component","components.controller")>
-    <cfset local.result = fileProcessor.uploader(form.image , form.title , form.description , local.maxSize)>
-    <p class="text-center text-danger"><cfoutput>#local.result.message#</cfoutput></p>
+    <cfset local.result = fileProcessor.uploader(form.image , form.title , form.description )>
+    <cfif local.result.success>
+      <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/14_image/thumbnail.cfm">
+      <cfelse>
+       <cfoutput><p class="text-center #local.result.className#">#local.result.message#</p></cfoutput>
+    </cfif>
   </cfif>
 </body>
 

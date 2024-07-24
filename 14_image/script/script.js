@@ -8,7 +8,7 @@ function validate() {
         
         if (imageSize > maxSize) {
             alert("Error: The image size is larger than 1 MB.");
+            event.preventDefault()
         }
-        event.preventDefault()
-}
+    }
 }
