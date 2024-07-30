@@ -1,0 +1,45 @@
+body{
+    background-color: #669900;
+}
+.navigate{
+    width: 640px;
+}
+.nav{
+    background-color: #99cc00;
+}
+.logo{
+    height: 80px;
+    display: block;
+    background: url(https://static.wufoo.com/images/wflogo-padding.png) no-repeat left top;
+    overflow: hidden;
+}
+.items{
+    background-color: white;
+}
+.salaryCent{
+    width: 30px;
+}
+label{
+    font-size: 80% !important;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: bold;
+    color: #444444 !important;
+    margin-bottom: 5px;
+}
+.powered{
+    font-size: 10px;
+    color: #606060 !important;
+    text-decoration: none;
+}
+.powered2{
+    font-size: 12px;
+    color: #606060 !important;
+    text-decoration: none;
+}
+.fs{
+    font-size: 12px;
+}
+input{
+    height: 22px;
+}
