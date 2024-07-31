@@ -1,5 +1,33 @@
+*{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.font{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+}
+.title-box{
+    margin-top: 24px;
+    padding-left: 8px;
+}
+.title{
+    color: black;
+    font-weight: normal;
+    font-size: 131%;
+    margin: 0 0 7px 0;
+    clear: left;
+}
+.title-bottom{
+    margin-bottom: 13px;
+    font-size: 78% !important;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: normal;
+    color: #444444 !important;
+}
 body{
     background-color: #669900;
+    padding-top: 17px;
 }
 .navigate{
     width: 640px;
@@ -20,12 +48,13 @@ body{
     width: 30px;
 }
 label{
-    font-size: 80% !important;
+    margin-top: 3px;
+    font-size: 79% ;
     font-family: inherit;
     font-style: normal;
     font-weight: bold;
-    color: #444444 !important;
-    margin-bottom: 5px;
+    color: #444444;
+    margin-bottom: 2px;
 }
 .powered{
     font-size: 10px;
@@ -40,6 +69,84 @@ label{
 .fs{
     font-size: 12px;
 }
-input{
-    height: 22px;
+.date-input {
+    display: inline-flex;
+    align-items: center;
 }
+
+.date-input input {
+    width: 2em;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.date-input input#year {
+    width: 3em;
+}
+
+.date-input span {
+    margin: 0 5px;
+}
+
+#calendar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.calendar{
+    cursor: pointer;
+    
+}
+.Fiel{
+    margin-bottom: 0 !important;
+}
+.form-input-box{
+    height: 24px;
+}
+.form-input-box-small{
+    height: 21px;
+    width: 195.83;
+}
+.form-check p{
+    font-size: 13px;
+    margin-top: 2px;
+}
+.req{
+    color: red;
+}
+.label-month{
+    margin-bottom: 0px;
+    margin-left: 2px;
+    font-size: 66% !important;
+    color: #000 !important;
+    margin-top: 5px;
+    width: 118px;
+    font-weight: normal !important;
+}
+.label-salary{
+    margin-bottom: 0px;
+    font-size: 66% !important;
+    color: #000 !important;
+    margin-top: 5px;
+    width: 140px;
+    font-weight: normal !important;
+    margin-left: 20px;
+}
+.radio{
+    display: block;
+    margin: 4px 0 0 0;
+    padding: 0;
+    width: 13px;
+    height: 13px;
+}
+
+
+.position{
+    width: 300px;
+}
+
