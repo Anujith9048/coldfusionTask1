@@ -6,6 +6,12 @@
   <title>Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script/jquery.js"></script>
 </head>
 <body class="pb-5">
   <div class="row mx-auto item d-block">
@@ -65,7 +71,7 @@
           </span>
           <span id="cal20">
             <img id="datePickerImage" class="calendar" src="https://static.wufoo.com/images/icons/calendar.png" alt="Pick a date." data-date-format="yyyy-mm-dd" data-date="today" />
-            <input type="text" id="datepicker" style="display:none;">
+            <input type="text" id="datepicker" style="display:none">
           </span>
           <div class="d-flex justify-content-between label-month">
             <p for="Fiel m-0">MM</p>

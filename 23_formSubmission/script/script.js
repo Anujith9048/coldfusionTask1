@@ -6,7 +6,13 @@ function colorize(elementID) {
             if (item === box) {
                 item.style.backgroundColor = '#FFF7C0';
             } else {
-                item.style.backgroundColor = ''; 
+
+                if(item.style.backgroundColor === ''){
+                    item.style.backgroundColor === '';
+                } 
+                else if(item.style.backgroundColor === '#FFDFDF'){
+                    item.style.backgroundColor === '#FFDFDF';
+                }
             }
         });
     });
@@ -153,6 +159,10 @@ function validate(){
             errorp.innerText="";
         }
     
+    }
+    
+    else{
+        alert("Form Submitted");
     }
 
 }
