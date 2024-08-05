@@ -44,6 +44,9 @@ body{
 .items{
     background-color: white;
 }
+input , select{
+    font-size: 12px;;
+}
 .salaryCent{
     width: 30px;
 }
@@ -146,7 +149,38 @@ label{
 }
 
 
-.position{
-    width: 300px;
-}
 
+.relocate ,.position, .date ,.site , .salary , .name  ,.phone ,.resume, .email{
+    width: 450px;
+}
+.site{
+    padding:5px 0px 10px 0px;
+}
+.errorhead{
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    padding: 0;
+    font-size: 16px;
+    color: #DF0000 !important;
+}
+.errorwelc{
+    font-size: 13px;
+}
+.error_box{
+    padding:12px;
+    border-radius: 25px;
+    border: 1px solid #DF0000;
+}
+#errorp , #errorp2 , #errorp3 , #errorp4, #errorp5, #errorp6, #errorp10{
+    margin: 0 !important;
+    padding: 7px 0 0 0 !important;
+    line-height: 10px !important;
+    font-weight: bold;
+    font-size: 11px;
+    color: #DF0000 !important;
+    clear: both;
+}
+.butn{
+    width:100px;
+    margin-top:5px;
+}
