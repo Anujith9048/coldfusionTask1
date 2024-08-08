@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<cfoutput>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,10 +13,6 @@
 <body class="p-5">
   <form class="col-5 mx-auto border border-1 p-3 mt-5 rounded" action="" method="post">
     <h3>Count the <span class="text-muted">words</span></h3>
-    <div class="form-floating">
-      <textarea name="text" id="text" class="form-control" placeholder=""></textarea>
-      <label for="text" >Enter the text here</label>
-    </div>
     <div class="d-flex row mx-0 justify-content-between">
       <button type="submit" class="border border-0 py-2 rounded-start btn-success mt-2 col-9" name="submit">Submit</button>
       <button type="button" id="countButton" class="border border-0 py-2 rounded-end btn-primary mt-2 col-3">Colorize</button>
@@ -23,6 +20,24 @@
     <a href="first.cfm" class="text-center">Go back</a>
   </form>
 
+  <div class="col-5 mx-auto mt-3">
+  <table class="table table-striped mx-auto">
+  <cfif structKeyExists(form , "submit")>
+    <cfset local.obj = createObject("component","components.tagCloud")>
+    <cfset local.result = local.obj.countText()>
+
+    
+<!---       <cfloop array="#local.result#" index="item"> --->
+<!---         <tr> --->
+<!---           <td class="ps-5"> #item# #count#;</td> --->
+<!---         </tr> --->
+<!---       </cfloop> --->
+  </cfif>
+</table>
+</div>
+
+    
+    
   <script>
     document.getElementById('countButton').addEventListener('click', function() {
       window.location.href = 'third.cfm';
@@ -30,3 +45,4 @@
   </script>
 </body>
 </html>
+</cfoutput>

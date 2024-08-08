@@ -11,7 +11,7 @@
 </head>
 <body class="p-5">
   <form class="col-5 mx-auto border border-1 p-3 mt-5 rounded" action="" method="post">
-    <h3 class="input-label">Enter the <span class="text-muted">words</span> </h3>
+    <h3 class="input-label">Enter the <span class="text-muted">String</span> </h3>
     <div class="form-floating">
       <textarea name="text" id="text" class="form-control" placeholder=""></textarea>
       <label for="text" >Enter the text here</label>
@@ -24,7 +24,7 @@
 
   <cfif structKeyExists(form , "submit")>
     <cfset local.obj = createObject("component","components.tagCloud")>
-    <cfset local.result = local.obj.countText(form.text)>
+    <cfset local.result = local.obj.getText(form.text)>
   </cfif>
 
 

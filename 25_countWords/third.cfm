@@ -12,10 +12,6 @@
 <body class="p-5">
   <form class="col-5 mx-auto border border-1 p-3 mt-5 rounded" action="" method="post">
     <h3>Colorize the <span class="text-muted">words</span></h3>
-    <div class="form-floating">
-      <textarea name="text" id="text" class="form-control" placeholder=""></textarea>
-      <label for="text" >Enter the text here</label>
-    </div>
       <button type="submit" class="border border-0 py-2 rounded btn-success mt-2 w-100" name="submit">Submit</button><br>
       <a href="second.cfm" class="text-center">Go back</a>
   </form>
