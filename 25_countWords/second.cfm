@@ -26,12 +26,12 @@
     <cfset local.obj = createObject("component","components.tagCloud")>
     <cfset local.result = local.obj.countText()>
 
-    
-<!---       <cfloop array="#local.result#" index="item"> --->
-<!---         <tr> --->
-<!---           <td class="ps-5"> #item# #count#;</td> --->
-<!---         </tr> --->
-<!---       </cfloop> --->
+    <cfloop collection="#local.result#" item="word">
+      <tr>
+        <td class="ms-5">#word# #local.result[word]#</td>
+      </tr>
+  </cfloop>
+
   </cfif>
 </table>
 </div>
