@@ -16,9 +16,14 @@
       <textarea name="text" id="text" class="form-control" placeholder=""></textarea>
       <label for="text" >Enter the text here</label>
     </div>
-    <div class="d-flex row mx-0 justify-content-between">
-      <button class="border border-0 py-2 rounded-start btn-success mt-2 col-9" name="submit">Submit</button>
-      <button type="button" id="countButton" class="border border-0 py-2 rounded-end btn-primary mt-2 col-3">Count</button>
+    <div class="row mx-0 justify-content-between gx-2">
+      <button class="border border-0 py-2 rounded-start btn-success mt-2 col-12" name="submit">Submit</button>
+      <div class="col-6 ms-0 ps-0">
+        <button type="button" id="countButton" class="border border-0 py-2 rounded  btn-primary mt-2 col-12">Count</button>
+      </div>
+      <div class="col-6  me-0 pe-0">
+        <button type="button" id="colorButton" class="border border-0 py-2 rounded  btn-primary mt-2 col-12">Colorize</button>
+      </div>
     </div>
   </form>
 
@@ -31,6 +36,9 @@
   <script>
     document.getElementById('countButton').addEventListener('click', function() {
       window.location.href = 'second.cfm';
+    });
+    document.getElementById('colorButton').addEventListener('click', function() {
+      window.location.href = 'third.cfm';
     });
   </script>
   </body>

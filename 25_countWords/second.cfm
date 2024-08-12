@@ -13,10 +13,7 @@
 <body class="p-5">
   <form class="col-5 mx-auto border border-1 p-3 mt-5 rounded" action="" method="post">
     <h3>Count the <span class="text-muted">words</span></h3>
-    <div class="d-flex row mx-0 justify-content-between">
-      <button type="submit" class="border border-0 py-2 rounded-start btn-success mt-2 col-9" name="submit">Submit</button>
-      <button type="button" id="countButton" class="border border-0 py-2 rounded-end btn-primary mt-2 col-3">Colorize</button>
-    </div>
+    <button type="submit" class="border border-0 py-2 rounded btn-success mt-2 col-12" name="submit">Submit</button>
     <a href="first.cfm" class="text-center">Go back</a>
   </form>
 
@@ -35,14 +32,6 @@
   </cfif>
 </table>
 </div>
-
-    
-    
-  <script>
-    document.getElementById('countButton').addEventListener('click', function() {
-      window.location.href = 'third.cfm';
-    });
-  </script>
 </body>
 </html>
 </cfoutput>
