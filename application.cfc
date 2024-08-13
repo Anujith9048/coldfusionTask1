@@ -16,9 +16,6 @@
     <cffunction name="onSessionStart" returntype="void">
         <cfset session.captchaNumber = "">
         <cfset session.captchaFileName = "">
-        <cfset session.userName="User">
-        <cfset session.userPassword="password">
-        <cfset session.adminName="Admin">
-        <cfset session.adminPassword="password">
+        <cfset session.isLog = false>
     </cffunction>
 </cfcomponent>
