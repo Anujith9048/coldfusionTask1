@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style/style.css">
   <script src="script/script.js"></script>
   <script src="script/jquery.js"></script>
 </head>
@@ -18,10 +17,9 @@
       </div>
       <h3 class="fw-bolder text-center">Login to <span class="text-primary">Account</span></h3>
       <div class="input-group  mt-4">
-        <input type="text" name="username" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
-      </div>    
-      <p class="form-text">You can enter email without @gmail.com</p>
+        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2">username</span>
+      </div>
       <div class="input-group mb-3 mt-4">
         <input type="password" name="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="basic-addon2">
       </div>  
@@ -33,8 +31,7 @@
     </form>
     <cfif structKeyExists(form, "login")>
       <cfset local.obj = createObject("component","components.controller")>
-      <cfset name = #form.username# &'@gmail.com'>
-      <cfset local.result = local.obj.login(name, form.password)>
+      <cfset local.result = local.obj.login(form.username, form.password)>
   
       <p class="#local.result.class# text-center">#local.result.text#</p>
     </cfif>

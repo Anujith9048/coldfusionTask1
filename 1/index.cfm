@@ -3,7 +3,7 @@
       <head>
         <title>My ColdFusion Page</title>
         <!-- Ensure the correct path to bundle.js -->
-        <script src="bundle.js"></script>
+        <script src="bundle.js?v=123"></script>
       </head>
       <body>
         <div id="frame-here">testt</div>

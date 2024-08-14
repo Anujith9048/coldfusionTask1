@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style/style.css">
   <script src="script/script.js"></script>
   <script src="script/jquery.js"></script>
 </head>
@@ -19,10 +18,9 @@
 
       <h3 class="fw-bolder text-center">Create New <span class="text-success">Account</span></h3>
       <div class="input-group  mt-4">
-        <input type="text" id="username" class="form-control" placeholder="Enter email" name="username">
-        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
-      </div>    
-      <p class="form-text">You can enter email without @gmail.com</p>
+        <input type="text" id="username" class="form-control" placeholder="Enter username" name="username">
+        <span class="input-group-text" id="basic-addon2">username</span>
+      </div>
 
 
       <div class="input-group mb-3 mt-4">
@@ -55,8 +53,7 @@
 
   <cfif structKeyExists(form, "signup")>
     <cfset local.obj = createObject("component","components.controller")>
-    <cfset name = #form.username# &'@gmail.com'>
-    <cfset local.result = local.obj.signup(name, form.password, form.role)>
+    <cfset local.result = local.obj.signup(form.username, form.password, form.role)>
 
     <p class="#local.result.class# text-center">#local.result.text#</p>
   </cfif>

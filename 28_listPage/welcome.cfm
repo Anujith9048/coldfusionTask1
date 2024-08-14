@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <cfoutput>
-
-<cfif session.isLog>
-    <html lang="en">
-    <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User page</title>
+    <title>InfoHub| #session.role#</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
   <script src="script/script.js"></script>
   <script src="script/jquery.js"></script>
-    </head>
-    <body>
-        <form action="" method="post">
-            <div class="row m-0 p-0">
-                <div class="col-12 mx-auto bg-success py-1 d-flex">
-                    <h3 class="p-3 mb-0 text-white text-center mx-auto fw-bolder">Welcome 
-                        <span class="text-success bg-white p-3 rounded">#session.name#</span></h3>
-                </div>
-                <button name="logout" class="text-white mt-4 border-0 mx-auto bg-success rounded fw-bold px-3 py-2 col-1">
-                    Log Out</button>
-            </div>
-        </form>
-    </body>
-    </html>
-    </html>
+</head>
+<body>
+    <cfinclude template="navbar.cfm">
 
-    <cfif structKeyExists(form, "logout")>
-        <cfset local.obj = createObject("component","components.controller")>
-        <cfset local.result = local.obj.logOut()>
-    </cfif>
-<cfelse>
-    <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/login.cfm">
-</cfif>
+    <div class="row mt-5 px-5 align-content-center #session.role#">
+        <div class="col-6">
+            <h2 class="text-light ">Welcome as <span class="fw-bolder">#session.role#</span></h2>
+        <cfif session.role EQ 'Admin'>
+            <p class="text-light">Welcome to <span class="fw-bold">InfoHub</span>. 
+                As a #session.role#, you can add , delete , edit contents. 
+                You'll see the main titles on our homepage. Simply click on the <span class="text-decoration-underline">view List</span> to view the 
+                full details and you can do the above mentioned actions. Enjoy exploring 
+                and discovering new information on our platform!</p>
+            </div>
+
+            <div class="col-12  w-100 d-flex gap-2 mt-5">
+                <div class="card col-4 bg-dark shadow-lg" >
+                    <div class="card-body text-light py-5">
+                      <h5 class="card-title">ADMINS can add new files</h5>
+                      <p class="card-text mt-3">Easily input new titles and descriptions to enrich your website's content. Keep your information up-to-date and captivating with minimal effort.</p>
+                    </div>
+                </div>
+                <div class="card col-4  bg-dark shadow-lg" >
+                    <div class="card-body text-light py-5">
+                      <h5 class="card-title">ADMINS can edit files</h5>
+                      <p class="card-text mt-3">Swiftly adjust existing titles and descriptions to ensure accuracy and relevance. Maintain a polished and engaging user experience effortlessly</p>
+                    </div>
+                </div>
+                <div class="card col-4 bg-dark shadow-lg" >
+                    <div class="card-body text-light py-5">
+                      <h5 class="card-title">ADMINS can delete files</h5>
+                      <p class="card-text mt-3">Remove outdated or unnecessary text entries with ease, preserving the quality and integrity of your website's content.</p>
+                    </div>
+                </div>
+            </div>
+
+        <cfelseif session.role EQ 'User'>
+            <p class="text-light">Welcome to <span class="fw-bold">InfoHub</span>. 
+                As a #session.role#, you have access to the latest content added by our administrators. You'll see the main titles on our homepage. Simply click on a title to view the full details and dive deeper into the content that interests you. Enjoy exploring and discovering new information on our platform!</p>
+            </div>
+        </cfif>
+        
+    </div>
+</body>
+</html>
 </cfoutput>
