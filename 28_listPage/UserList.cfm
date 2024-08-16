@@ -7,10 +7,9 @@
     <title>InfoHub|AdminList</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
-  <script src="script/script.js"></script>
-  <script src="script/jquery.js"></script>
 </head>
 <body class="text-light">
+  <cfset local.obj = createObject("component","components.controller")>
   <cfinclude template="navbar.cfm">
 
 
@@ -23,11 +22,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="text-light">
-            <td>Java</td>
-            <td>Welcome to java</td>
-          </tr>
-        </tbody>
+          <cfset local.result = local.obj.getData()>
+          <cfloop query="#local.result#">
+              <tr class="text-light">
+                  <td>#local.result.title#</td>
+                  <td>#local.result.description#</td>
+              </tr>
+          </cfloop>
+      </tbody>
     </table>
    </div>
 

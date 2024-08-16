@@ -17,8 +17,8 @@
       </div>
       <h3 class="fw-bolder text-center">Login to <span class="text-primary">Account</span></h3>
       <div class="input-group  mt-4">
-        <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">username</span>
+        <input type="text" name="email" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
       </div>
       <div class="input-group mb-3 mt-4">
         <input type="password" name="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="basic-addon2">
@@ -31,7 +31,7 @@
     </form>
     <cfif structKeyExists(form, "login")>
       <cfset local.obj = createObject("component","components.controller")>
-      <cfset local.result = local.obj.login(form.username, form.password)>
+      <cfset local.result = local.obj.login(form.email, form.password)>
   
       <p class="#local.result.class# text-center">#local.result.text#</p>
     </cfif>

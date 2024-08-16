@@ -21,6 +21,10 @@
         <input type="text" id="username" class="form-control" placeholder="Enter username" name="username">
         <span class="input-group-text" id="basic-addon2">username</span>
       </div>
+      <div class="input-group  mt-4">
+        <input type="email" id="email" class="form-control" placeholder="Enter email" name="email">
+        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+      </div>
 
 
       <div class="input-group mb-3 mt-4">
@@ -53,7 +57,7 @@
 
   <cfif structKeyExists(form, "signup")>
     <cfset local.obj = createObject("component","components.controller")>
-    <cfset local.result = local.obj.signup(form.username, form.password, form.role)>
+    <cfset local.result = local.obj.signup(form.username, form.password, form.role, form.email)>
 
     <p class="#local.result.class# text-center">#local.result.text#</p>
   </cfif>

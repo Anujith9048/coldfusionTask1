@@ -5,12 +5,13 @@
       <cfargument name="username" type="string" >
       <cfargument name="password" type="string" >
       <cfargument name="role" type="string" >
+      <cfargument name="email" type="string" >
       <cfquery name="check" datasource="myDatabase">
-        SELECT username FROM userData 
-        WHERE username = <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">
+        SELECT email FROM userData 
+        WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
       </cfquery>
-      <cfif check.username EQ arguments.username>
-        <cfif arguments.username EQ "">
+      <cfif check.email EQ arguments.email>
+        <cfif arguments.email EQ "">
           <cfreturn {
             text:'',
             class:''
@@ -23,11 +24,12 @@
         
       <cfelse>
        <cfquery name="insertData" datasource="myDatabase">
-        INSERT INTO userData (username , password , role)
+        INSERT INTO userData (username, password , role, email)
         VALUES(
           <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">,
           <cfqueryparam value="#arguments.password#"  cfsqltype="cf_sql_varchar">,
-          <cfqueryparam value="#arguments.role#"  cfsqltype="cf_sql_varchar">
+          <cfqueryparam value="#arguments.role#"  cfsqltype="cf_sql_varchar">,
+          <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
         )
       </cfquery>
       <cfreturn {
@@ -40,21 +42,25 @@
 
 <!--- Function for LOGIN --->
     <cffunction name="login" access="public" returntype="any">
-      <cfargument name="username" type="string" >
+      <cfargument name="email" type="string" >
       <cfargument name="password" type="string" >
 
       <cfquery name="check" datasource="myDatabase">
         SELECT * FROM userData 
-        WHERE username = <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">
+        WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
       </cfquery>
-      <cfif check.username EQ arguments.username AND check.password EQ arguments.password>
+      <cfif check.email EQ arguments.email AND check.password EQ arguments.password>
         <cfif check.role EQ 'User'>
-          <cfset session.userName = arguments.username>
+          <cfset session.userName = check.username>
           <cfset session.role = 'User'>
           <cflocation  url="welcome.cfm">
         <cfelseif check.role EQ 'Admin'>
-          <cfset session.userName = arguments.username>
+          <cfset session.userName = check.username>
           <cfset session.role = 'Admin'>
+          <cflocation  url="welcome.cfm">
+        <cfelseif check.role EQ 'Editor'>
+          <cfset session.userName = check.username>
+          <cfset session.role = 'Editor'>
           <cflocation  url="welcome.cfm">
         </cfif>
         <cfreturn {
@@ -62,7 +68,7 @@
           class:'text-warning'
         }>
         
-      <cfelseif check.username EQ arguments.username AND check.password NEQ arguments.password>       
+      <cfelseif check.email EQ arguments.email AND check.password NEQ arguments.password>       
       <cfreturn {
         text:"Incorrect password",
         class:'text-danger'
@@ -75,12 +81,6 @@
       </cfif>
     </cffunction>
 
-
-   <!--- Function for LOGIN --->
-   <cffunction name="logOut" access="public" returntype="any">
-    <cfset StructClear(session)>
-    <cflocation url="login.cfc">
-   </cffunction>
 
 
 <!--- Function for ADD DATA --->
@@ -98,12 +98,37 @@
       <cfreturn 'Data added sussfully'>
     </cffunction>
 
-    <cffunction name="getData" access="public" returntype="any">
+<!--- Function to EDIT DATA --->
+    <cffunction name="editData" access="public" returntype="any">
+      <cfargument name="title" type="string">
+      <cfargument name="description" type="string">
+      <cfargument name="id" type="string">
+      <cfquery name="addDatas" datasource="myDatabase">
+          UPDATE pageData
+          SET title = <cfqueryparam value="#arguments.title#" cfsqltype="cf_sql_varchar">,
+          description = <cfqueryparam value="#arguments.description#" cfsqltype="cf_sql_varchar">
+          WHERE pageId =<cfqueryparam value="#arguments.id#" cfsqltype="cf_sql_varchar">;
+      </cfquery>
+      <cfreturn 'Data edited sussfully'>
+    </cffunction>
 
+
+<!--- Function to GET DATA --->
+    <cffunction name="getData" access="public" returntype="any">
       <cfquery name="getDatas" datasource="myDatabase">
       SELECT * FROM pageData  
       </cfquery>
       <cfreturn getDatas>
     </cffunction>
-</cfcomponent>
+
+    <!--- Function to GET VALUES --->
+        <cffunction name="getvalue" access="public" returntype="any">
+          <cfargument name="value" type="string">
+          <cfquery name="getDatas" datasource="myDatabase">
+          SELECT * FROM pageData WHERE pageId = <cfqueryparam value="#arguments.value#" cfsqltype="cf_sql_varchar">
+          </cfquery>
+          <cfreturn getDatas>
+        </cffunction>
+    </cfcomponent>
+
 

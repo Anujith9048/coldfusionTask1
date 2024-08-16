@@ -12,13 +12,12 @@
 </head>
 <body>
     <cfinclude template="navbar.cfm">
-
     <div class="row mt-5 px-5 align-content-center #session.role#">
         <div class="col-6">
-            <h2 class="text-light ">Welcome as <span class="fw-bolder">#session.role#</span></h2>
-        <cfif session.role EQ 'Admin'>
+            <h2 class="text-light ">Welcome as <span class="fw-bolder userHello">#session.role#</span></h2>
+        <cfif session.role EQ 'Admin' OR session.role EQ 'Editor'>
             <p class="text-light">Welcome to <span class="fw-bold">InfoHub</span>. 
-                As a #session.role#, you can add , delete , edit contents. 
+                As an #session.role#, you can add , delete , edit contents. 
                 You'll see the main titles on our homepage. Simply click on the <span class="text-decoration-underline">view List</span> to view the 
                 full details and you can do the above mentioned actions. Enjoy exploring 
                 and discovering new information on our platform!</p>
@@ -46,11 +45,10 @@
             </div>
 
         <cfelseif session.role EQ 'User'>
-            <p class="text-light">Welcome to <span class="fw-bold">InfoHub</span>. 
+            <p class="text-light">Welcome to <span class="fw-bold">InfoVault</span>. 
                 As a #session.role#, you have access to the latest content added by our administrators. You'll see the main titles on our homepage. Simply click on a title to view the full details and dive deeper into the content that interests you. Enjoy exploring and discovering new information on our platform!</p>
             </div>
         </cfif>
-        
     </div>
 </body>
 </html>
