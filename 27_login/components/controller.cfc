@@ -3,14 +3,20 @@
     <cffunction name="checkLog" access="public"  returntype="any">
         <cfargument name="username" type="string">
         <cfargument name="password" type="string">
-
-        <cfif arguments.username EQ session.userName AND arguments.password EQ session.userPassword>
-            <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/user.cfm">
-        <cfelseif arguments.username EQ session.adminName AND arguments.password EQ session.adminPassword>
-            <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/admin.cfm">
+        <cfif len(arguments.username) EQ 0 AND len(arguments.password)EQ 0>
+            <cfreturn 'Enter username and password'>
         <cfelse>
-            <cfreturn 'Enter correct details !'>
+            <cfset session.name = arguments.username>
+            <cfset session.isLog = true>
+            <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/welcome.cfm">         
         </cfif>
+        
     </cffunction>
+
+    <cffunction name="logOut" access="public"  returntype="any">
+        <cfset StructClear(session)>
+        <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/login.cfm">
+    </cffunction>
+
 </cfcomponent>
 

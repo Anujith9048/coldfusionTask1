@@ -1,20 +1,27 @@
-<cfoutput>
-    <html>
-      <head>
-        <title>My ColdFusion Page</title>
-        <!-- Ensure the correct path to bundle.js -->
-        <script src="bundle.js"></script>
-      </head>
-      <body>
-        <div id="frame-here">testt</div>
-        <script>
-        console.log('test buddy :: ',SSLA)
-          document.addEventListener('DOMContentLoaded', function() {
-            const ssla = SSLA.SSLA.prototype;
-            console.log('ssla ::::::::::::::: ', ssla);
-            ssla.start();
-          });
-        </script>
-      </body>
-    </html>
-    </cfoutput>
+<html>
+ 
+  <head>
+      <title>
+          jQuery UI | Date Picker
+      </title>
+      <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+   
+  <body>
+      Date: <input type="text"
+                   id="my_date_picker">
+   
+      <script>
+          $(document).ready(function () {
+   
+              $(function () {
+                  $("#my_date_picker").
+                  datepicker();
+              });
+          }) 
+      </script>
+  </body>
+   
+  </html>
