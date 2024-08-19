@@ -1,5 +1,6 @@
 function validateSignup(){
     var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
     var role = document.getElementById("role").value;
@@ -8,6 +9,11 @@ function validateSignup(){
     if(username ===""){
         document.getElementById("error").innerText="Enter a username";
         document.getElementById("username").classList.add("is-invalid");
+        event.preventDefault();
+    }
+    if(email ===""){
+        document.getElementById("error").innerText="Enter email";
+        document.getElementById("email").classList.add("is-invalid");
         event.preventDefault();
     }
     if(pass1 ===""){
@@ -32,9 +38,30 @@ function validateSignup(){
         event.preventDefault();
     }
     if(username ==='' && pass1 ==='' && pass2 ==='' && role ==='Choose...'){
-        alert("Enter all the fields");
         document.getElementById("error").innerText="";
     }
 }
-
+$("#deleteList").on("click",function () {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    $.ajax({
+        url: 'components/controller.cfc',
+        method: 'post',
+        data: {
+            method:'mailAdd',
+            name: name,
+            email: email
+        },
+        dataType:"json",
+        success: function (response) {
+            if(response.success == true){
+                alert("Successfully subscribed. ");
+                $("#subscribe").prop("disabled", true);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log("An error occurred : " + error);
+        }
+    });
+})
 

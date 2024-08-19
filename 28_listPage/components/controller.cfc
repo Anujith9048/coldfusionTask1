@@ -64,8 +64,8 @@
           <cflocation  url="welcome.cfm">
         </cfif>
         <cfreturn {
-          text:'Error occured pleace try again!',
-          class:'text-warning'
+          text:'Enter username and password',
+          class:'text-danger'
         }>
         
       <cfelseif check.email EQ arguments.email AND check.password NEQ arguments.password>       
@@ -109,7 +109,7 @@
           description = <cfqueryparam value="#arguments.description#" cfsqltype="cf_sql_varchar">
           WHERE pageId =<cfqueryparam value="#arguments.id#" cfsqltype="cf_sql_varchar">;
       </cfquery>
-      <cfreturn 'Data edited sussfully'>
+      <cflocation  url="AdminList.cfm">
     </cffunction>
 
 
@@ -129,6 +129,15 @@
           </cfquery>
           <cfreturn getDatas>
         </cffunction>
+
+   <!--- Function to deleteRow --->
+      <cffunction name="deleteRow" access="public" returntype="any">
+        <cfargument name="pageId" type="string">
+        <cfquery name="deleteDatas" datasource="myDatabase">
+         DELETE FROM pageData WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_varchar">  
+        </cfquery>
+        <cfreturn "List deleted successfully">
+      </cffunction>
     </cfcomponent>
 
 

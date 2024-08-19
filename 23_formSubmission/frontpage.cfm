@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page</title>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script src="script/jquery.js"></script>
 </head>
 <body class="pb-5">
@@ -70,8 +70,7 @@
             <input id="year" name="year" type="text" class="form-input-box field text" value="" size="4" maxlength="4" tabindex="0" oninput="moveNext(this , NULL)"/>
           </span>
           <span id="cal20">
-            <img id="datePickerImage" class="calendar" src="https://static.wufoo.com/images/icons/calendar.png" alt="Pick a date." data-date-format="yyyy-mm-dd" data-date="today" />
-            <input type="text" id="datepicker" style="display:none">
+            <img id="datePickerImage" class="calendar" src="https://static.wufoo.com/images/icons/calendar.png" alt="Pick a date." data-date-format="yyyy-mm-dd" data-date="today"/>
           </span>
           <div class="d-flex justify-content-between label-month">
             <p for="Fiel m-0">MM</p>
@@ -128,7 +127,7 @@
           </label><br>
           <input id="phone1" name="phone1" type="text" class="form-input-box" value="" maxlength="3" size="4" oninput="moveNext(this,'phone2')"> -
           <input id="phone2" name="phone2" type="text" class="form-input-box" value="" maxlength="3" size="4" oninput="moveNext(this,'phone3')"> -
-          <input id="phone3" name="phone3" type="text" class="form-input-box" value="" maxlength="4" size="4" oninput="moveNext(this,NULL)">
+          <input id="phone3" name="phone3" type="text" class="form-input-box" value="" maxlength="4" size="5" oninput="moveNext(this,NULL)">
           <p id="errorp6"></p>
         </div>
         <input type="submit" value="Submit" class="ms-2 butn" id="submit" onclick="validate()">
@@ -146,7 +145,15 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-  
+  <script>
+    $(document).ready(function () {
+
+        $(function () {
+            $("#datePickerImage").
+            datepicker();
+        });
+    }) 
+</script>
   <script type="text/javascript" src="script/script.js"></script>
 </body>
 </html>

@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup</title>
+  <title>infoVault|Signup</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/logo2.jpg">
   <script src="script/script.js"></script>
   <script src="script/jquery.js"></script>
 </head>

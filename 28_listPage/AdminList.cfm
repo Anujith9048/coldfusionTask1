@@ -7,6 +7,7 @@
     <title>InfoHub|AdminList</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/logo2.jpg">
     <script src="script/script.js"></script>
 </head>
 <body class="text-light">
@@ -28,8 +29,8 @@
                     <td>#local.result.title#</td>
                     <td>#local.result.description#</td>
                     <td>
-                        <a href="dataAction.cfm?list=edit&id=#local.result.pageId#" id=""><img src="assets/edit.png" class="img-fluid"  width="25" alt=""></a>
-                        <a href="" id="deleteList"><img src="assets/delete.png" width="20" alt="" onclick="deleteList()"></a>
+                        <a href="dataAction.cfm?list=edit&id=#local.result.pageId#" class="me-2" id=""  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit the list"><img src="assets/edit.png" class="img-fluid"  width="25" alt=""></a>
+                        <a href="dataAction.cfm?list=delete&id=#local.result.pageId#" class="ms-2" id="deleteList"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete the list"><img src="assets/delete.png" width="20" alt="" onclick="deleteList()"></a>
                         
                     </td>
                 </tr>
