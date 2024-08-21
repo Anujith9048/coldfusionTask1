@@ -147,3 +147,15 @@ function moveNext(current, next) {
         }
     }
 }
+const dateInput = document.getElementById('datepicker');
+const day = document.getElementById('day');
+const month = document.getElementById('month');
+const year = document.getElementById('year');
+
+dateInput.addEventListener('change', function() {
+    const selectedDate = dateInput.value;
+    const splitedDate = selectedDate.split("-").reverse();
+    day.value = splitedDate[0];
+    month.value = splitedDate[1];
+    year.value = splitedDate[2];
+});

@@ -7,10 +7,12 @@
       <cfargument name="role" type="string" >
       <cfargument name="email" type="string" >
       <cfquery name="check" datasource="myDatabase">
-        SELECT email FROM userData 
+        SELECT * 
+        FROM userData 
         WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
       </cfquery>
-      <cfif check.email EQ arguments.email>
+
+      <cfif check.email EQ arguments.email AND check.role EQ arguments.role>
         <cfif arguments.email EQ "">
           <cfreturn {
             text:'',
@@ -23,15 +25,15 @@
         }>
         
       <cfelse>
-       <cfquery name="insertData" datasource="myDatabase">
-        INSERT INTO userData (username, password , role, email)
-        VALUES(
-          <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">,
-          <cfqueryparam value="#arguments.password#"  cfsqltype="cf_sql_varchar">,
-          <cfqueryparam value="#arguments.role#"  cfsqltype="cf_sql_varchar">,
-          <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
-        )
-      </cfquery>
+        <cfquery name="insertData" datasource="myDatabase">
+          INSERT INTO userData (username, password , role, email)
+          VALUES(
+            <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">,
+            <cfqueryparam value="#arguments.password#"  cfsqltype="cf_sql_varchar">,
+            <cfqueryparam value="#arguments.role#"  cfsqltype="cf_sql_varchar">,
+            <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
+          )
+        </cfquery>
       <cfreturn {
         text:'Your account has been created please login',
         class:'text-success'
@@ -48,17 +50,23 @@
       <cfquery name="check" datasource="myDatabase">
         SELECT * FROM userData 
         WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
+
       </cfquery>
       <cfif check.email EQ arguments.email AND check.password EQ arguments.password>
         <cfif check.role EQ 'User'>
+          <cfset session.isLogged =true>
           <cfset session.userName = check.username>
           <cfset session.role = 'User'>
           <cflocation  url="welcome.cfm">
+
         <cfelseif check.role EQ 'Admin'>
+          <cfset session.isLogged =true>
           <cfset session.userName = check.username>
           <cfset session.role = 'Admin'>
           <cflocation  url="welcome.cfm">
+          
         <cfelseif check.role EQ 'Editor'>
+          <cfset session.isLogged =true>
           <cfset session.userName = check.username>
           <cfset session.role = 'Editor'>
           <cflocation  url="welcome.cfm">
@@ -70,7 +78,7 @@
         
       <cfelseif check.email EQ arguments.email AND check.password NEQ arguments.password>       
       <cfreturn {
-        text:"Incorrect password",
+        text:"Incorrect email or password",
         class:'text-danger'
       }>
       <cfelse>
@@ -115,9 +123,11 @@
 
 <!--- Function to GET DATA --->
     <cffunction name="getData" access="public" returntype="any">
+
       <cfquery name="getDatas" datasource="myDatabase">
-      SELECT * FROM pageData  
+        SELECT * FROM pageData  
       </cfquery>
+
       <cfreturn getDatas>
     </cffunction>
 
@@ -130,13 +140,22 @@
           <cfreturn getDatas>
         </cffunction>
 
+    <!--- Function to GET LIST --->
+    <cffunction name="getList" access="public" returntype="any">
+      <cfargument name="value" type="string">
+      <cfquery name="qgetData" datasource="myDatabase">
+      SELECT * FROM pageData WHERE pageId = <cfqueryparam value="#arguments.value#" cfsqltype="cf_sql_varchar">
+      </cfquery>
+      <cfreturn qgetData>
+    </cffunction>
+
    <!--- Function to deleteRow --->
-      <cffunction name="deleteRow" access="public" returntype="any">
+      <cffunction name="deleteRow" access="remote" returnformat="plain">
         <cfargument name="pageId" type="string">
         <cfquery name="deleteDatas" datasource="myDatabase">
          DELETE FROM pageData WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_varchar">  
         </cfquery>
-        <cfreturn "List deleted successfully">
+        <cfreturn true>
       </cffunction>
     </cfcomponent>
 

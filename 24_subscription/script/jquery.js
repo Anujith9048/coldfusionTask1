@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#check").click(function () {
+        
         event.preventDefault();
         var email = $("#email").val();
         $.ajax({
