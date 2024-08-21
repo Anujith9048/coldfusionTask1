@@ -22,3 +22,7 @@ li{
 li:hover{
     text-shadow: rgb(0, 247, 255) 0px 0 19px;
 }
+.adminBtn img{
+    width: 25px;
+    height: 25px;
+}

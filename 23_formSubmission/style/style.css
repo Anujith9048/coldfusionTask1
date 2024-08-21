@@ -95,12 +95,6 @@ label{
     margin: 0 5px;
 }
 
-#calendar-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2em;
-}
 .calendar{
     cursor: pointer;
     
@@ -183,4 +177,14 @@ label{
 .butn{
     width:100px;
     margin-top:5px;
+}
+#datepicker{
+    background-image :url("https://static.wufoo.com/images/icons/calendar.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 16.5px;
+    border: 0px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: opacity(0);
 }

@@ -19,5 +19,6 @@
         <cfset session.userName ="">
         <cfset sessionInvalidate.role = "">
         <cfset session.isLog = false>
+        <cfset session.isLogged = false>
     </cffunction>
 </cfcomponent>

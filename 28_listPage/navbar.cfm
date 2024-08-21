@@ -22,7 +22,7 @@
     </div>
 
     <cfif structKeyExists(form, "logOut")>
-        <cfset StructClear(session)>
+        <cfset session.isLogged = false>
         <cflocation  url="login.cfm">>
     </cfif>
 </nav>
