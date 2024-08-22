@@ -6,9 +6,10 @@
       <cfargument name="password" type="string" >
       <cfargument name="role" type="string" >
       <cfargument name="email" type="string" >
+      <cfset local.encrypted_pass = Hash(#arguments.password#, 'SHA-512')/>
       <cfquery name="check" datasource="myDatabase">
         SELECT * 
-        FROM userData 
+        FROM userDatas 
         WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
       </cfquery>
 
@@ -26,10 +27,10 @@
         
       <cfelse>
         <cfquery name="insertData" datasource="myDatabase">
-          INSERT INTO userData (username, password , role, email)
+          INSERT INTO userDatas (username, password , role, email)
           VALUES(
             <cfqueryparam value="#arguments.username#"  cfsqltype="cf_sql_varchar">,
-            <cfqueryparam value="#arguments.password#"  cfsqltype="cf_sql_varchar">,
+            <cfqueryparam value="#local.encrypted_pass#"  cfsqltype="cf_sql_varchar">,
             <cfqueryparam value="#arguments.role#"  cfsqltype="cf_sql_varchar">,
             <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
           )
@@ -46,13 +47,14 @@
     <cffunction name="login" access="public" returntype="any">
       <cfargument name="email" type="string" >
       <cfargument name="password" type="string" >
+      <cfset local.encrypted_pass = Hash(#arguments.password#, 'SHA-512')/>
 
       <cfquery name="check" datasource="myDatabase">
-        SELECT * FROM userData 
+        SELECT * FROM userDatas 
         WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
 
       </cfquery>
-      <cfif check.email EQ arguments.email AND check.password EQ arguments.password>
+      <cfif check.email EQ arguments.email AND check.password EQ local.encrypted_pass>
         <cfif check.role EQ 'User'>
           <cfset session.isLogged =true>
           <cfset session.userName = check.username>
@@ -76,7 +78,7 @@
           class:'text-danger'
         }>
         
-      <cfelseif check.email EQ arguments.email AND check.password NEQ arguments.password>       
+      <cfelseif check.email EQ arguments.email AND check.password NEQ local.encrypted_pass>       
       <cfreturn {
         text:"Incorrect email or password",
         class:'text-danger'
@@ -130,6 +132,29 @@
 
       <cfreturn getDatas>
     </cffunction>
+    
+<!--- Function to SELECT DATA --->
+    <cffunction name="selectData" access="remote" returnformat="json">
+     <cfargument name="pageId" type="string" required="true">
+     <cfset var struct = {}>
+
+     <cfquery name="queSelectData" datasource="myDatabase">
+         SELECT title, description ,pageId
+         FROM pageData 
+         WHERE pageId = <cfqueryparam value="#arguments.pageId#" cfsqltype="cf_sql_varchar">
+     </cfquery>
+     <cfif queSelectData.recordcount gt 0>
+        <cfset struct["title"] = queSelectData.title>
+        <cfset struct["description"] = queSelectData.description>
+        <cfreturn {"id":queSelectData.pageId}>
+     <cfelse>
+         <cfset struct.title = "">
+         <cfset struct.description = "">
+         <cfreturn {"id":queSelectData.pageId}>
+      </cfif>
+     <cfset jsonStr = serializeJSON(struct)>
+    </cffunction>
+
 
     <!--- Function to GET VALUES --->
         <cffunction name="getvalue" access="public" returntype="any">

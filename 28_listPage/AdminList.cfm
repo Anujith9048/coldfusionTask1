@@ -10,7 +10,6 @@
     <link rel="icon" type="image/x-icon" href="assets/logo2.jpg">
     <script src="script/script.js"></script>
     <script src="script/jquery-ui.min.js"></script>
-    <script src="script/jquery.js"></script>
     <script src="script/dummy.js"></script>
 
 </head>
@@ -36,7 +35,7 @@
                         <a href="dataAction.cfm?list=edit&id=#local.result.pageId#" class="me-2" id="editList"  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit the list"><img src="assets/edit.png" class="img-fluid"  width="25" alt=""></a>
                         <a href="##"  alt=""></a>
 
-                        <button class="ms-2 btn adminBtn deleteList" id="" data-id="#local.result.pageId#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete the list"><img src="assets/delete.png" ></button>
+                        <button class="ms-2 btn adminBtn deleteList" id="" data-id="#local.result.pageId#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete the list"><img src="assets/delete.png" alt="delete"></button>
                     </td>
                 </tr>
             </cfloop>   

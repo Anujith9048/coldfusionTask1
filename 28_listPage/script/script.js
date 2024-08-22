@@ -77,7 +77,33 @@ function validateSignup(){
         event.preventDefault();
     }
     else{
-        document.getElementById("errorP").innerText=""; 
-        document.getElementById("pass1").classList.remove("is-invalid");
+        document.getElementById("errorRole").innerText=""; 
+        document.getElementById("role").classList.remove("is-invalid");
     }
+}
+function editValidate(){
+    var title = document.getElementById("title").value;
+    var desc = document.getElementById("desc").value;
+    
+
+    if(title === ""){
+        document.getElementById("errorTit").innerText="Enter a title";
+        document.getElementById("title").classList.add("is-invalid");
+        event.preventDefault();
+    }
+    else{
+        document.getElementById("errorTit").innerText=""; 
+        document.getElementById("title").classList.remove("is-invalid");
+    }
+
+    if(desc === ""){
+        document.getElementById("errorDes").innerText="Enter Description";
+        document.getElementById("desc").classList.add("is-invalid");
+        event.preventDefault();
+    }
+    else{
+        document.getElementById("errorDes").innerText=""; 
+        document.getElementById("desc").classList.remove("is-invalid");
+    }
+
 }
