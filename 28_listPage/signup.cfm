@@ -18,23 +18,30 @@
       </div>
 
       <h3 class="fw-bolder text-center">Create New <span class="text-success">Account</span></h3>
-      <div class="input-group  mt-4">
-        <input type="text" id="username" class="form-control" placeholder="Enter username" name="username">
-        <span class="input-group-text" id="basic-addon2">username</span>
+      <div class="input-group  mt-4 d-block">
+        <label for="" class="form-label">Username</label>
+        <input type="text" id="username" class="form-control w-100" placeholder="Enter username" name="username">
+        <p class="text-danger text- m-0 " id="errorUser"></p>
       </div>
       <div class="input-group  mt-4">
-        <input type="email" id="email" class="form-control" placeholder="Enter email" name="email">
-        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+        <label for="" class="form-label">Email</label>
+        <input type="text" id="email" class="form-control w-100" placeholder="Enter email" name="email">
+        <p class="text-danger text- m-0 " id="errorEmail"></p>
       </div>
 
 
       <div class="input-group mb-3 mt-4">
-        <input type="password" id="pass1" class="form-control" placeholder="Password" name="password">
+        <label for="" class="form-label">Password</label>
+        <input type="password" id="pass1" class="form-control w-100" placeholder="Password" name="password">
+        <p class="text-danger m-0 " id="errorP"></p>
+        <p class="text-danger m-0" id="error"></p>
       </div>
 
 
       <div class="input-group mb-3 mt-4">
-        <input type="password" id="pass2" class="form-control" placeholder="Conform Password" name="cnfmPassword">
+        <label for="" class="form-label">Confirm password</label>
+        <input type="password" id="pass2" class="form-control w-100" placeholder="Confirm Password" name="cnfmPassword">
+        <p class="text-danger text- m-0 " id="errorConfirm"></p>
       </div> 
 
       <div class="input-group mb-3">
@@ -44,14 +51,14 @@
           <option value="Admin">Admin</option>
           <option value="Editor">Editor</option>
           <option value="User">User</option>
-        </select>
+        </select> <br>
+        <p class="text-danger text- m-0 w-100" id="errorRole"></p>
       </div>
       <input type="submit" name="signup" value="Sign up" class="btn btn-success w-100" onclick="validateSignup()">
       <div class="log-btn text-center mt-3">
         <a href="login.cfm " class="text-dark text-decoration-none">Already have an Account?
           <span class="text-primary fw-bold">Login</span> </a> 
       </div>
-      <p class="text-danger text-center" id="error"></p>
 
     </form>
   </div>

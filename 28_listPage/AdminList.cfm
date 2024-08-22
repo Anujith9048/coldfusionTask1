@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo2.jpg">
     <script src="script/script.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <script src="script/dummy.js"></script>
+
 </head>
 <body class="text-light">
     <cfinclude template="navbar.cfm">
@@ -29,16 +32,18 @@
                     <td>#local.result.title#</td>
                     <td>#local.result.description#</td>
                     <td>
-                        <a href="dataAction.cfm?list=edit&id=#local.result.pageId#" class="me-2" id=""  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit the list"><img src="assets/edit.png" class="img-fluid"  width="25" alt=""></a>
-                        <a href="dataAction.cfm?list=delete&id=#local.result.pageId#" class="ms-2" id="deleteList"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete the list"><img src="assets/delete.png" width="20" alt="" onclick="deleteList()"></a>
-                        
+                        <a href="dataAction.cfm?list=edit&id=#local.result.pageId#" class="me-2" id="editList"  data-bs-toggle="tooltip" data-bs-placement="top" title="Edit the list"><img src="assets/edit.png" class="img-fluid"  width="25" alt=""></a>
+                        <a href="##"  alt=""></a>
+
+                        <button class="ms-2 btn adminBtn deleteList" id="" data-id="#local.result.pageId#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete the list"><img src="assets/delete.png" alt="delete"></button>
                     </td>
                 </tr>
             </cfloop>   
         </tbody>
+        <p class="text-success" id="succ"></p>
     </table>
     <form action="" method="post">
-        <input class="btn btn-primary mx-auto" type="submit" value="Add datas" name="submit">
+        <input class="btn btn-primary mx-auto" type="submit" value="Add List" name="submit">
     </form>
    </div>
 

@@ -7,61 +7,103 @@ function validateSignup(){
 
     
     if(username ===""){
-        document.getElementById("error").innerText="Enter a username";
+        document.getElementById("errorUser").innerText="Enter a username";
         document.getElementById("username").classList.add("is-invalid");
         event.preventDefault();
     }
+    else{
+        document.getElementById("errorUser").innerText=""; 
+        document.getElementById("username").classList.remove("is-invalid");
+    }
     if(email ===""){
-        document.getElementById("error").innerText="Enter email";
+        document.getElementById("errorEmail").innerText="Enter a valid email address";
         document.getElementById("email").classList.add("is-invalid");
         event.preventDefault();
+    }
+    else{
+        document.getElementById("errorEmail").innerText=""; 
+        document.getElementById("email").classList.remove("is-invalid");
+    }
+    var emailValidate= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailValidate.test(email)){
+        document.getElementById("errorEmail").innerText="Enter a valid email address!!";
+        event.preventDefault();
+    }
+    else{
+        document.getElementById("errorEmail").innerText=""; 
+        document.getElementById("email").classList.remove("is-invalid");
     }
     if(pass1 ===""){
         document.getElementById("error").innerText="Enter a password";
         document.getElementById("pass1").classList.add("is-invalid");
         event.preventDefault();
     }
+    else{
+        document.getElementById("error").innerText=""; 
+        document.getElementById("pass1").classList.remove("is-invalid");
+    }
+    var passw =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+    if(!pass1.match(passw)){
+        document.getElementById("error").innerText="The password must contain 8 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter";
+        event.preventDefault();
+    }   
+    else{
+        document.getElementById("error").innerText=""; 
+        document.getElementById("pass1").classList.remove("is-invalid");
+    }
     if(pass1 != pass2){
-        document.getElementById("error").innerText="Password doesnot match!";
+        document.getElementById("errorConfirm").innerText="Password doesnot match!";
         document.getElementById("pass1").classList.add("is-invalid");
         document.getElementById("pass2").classList.add("is-invalid");
         event.preventDefault();
     }
+    else{
+        document.getElementById("errorConfirm").innerText=""; 
+        document.getElementById("pass1").classList.remove("is-invalid");
+        document.getElementById("pass2").classList.remove("is-invalid");
+    }
     if(pass2 === ""){
-        document.getElementById("error").innerText="Conform the password!!";
+        document.getElementById("errorConfirm").innerText="Confirm the password!!";
         document.getElementById("pass2").classList.add("is-invalid");
         event.preventDefault();
     }
+    else{
+        document.getElementById("errorP").innerText=""; 
+        document.getElementById("pass1").classList.remove("is-invalid");
+    }
     if(role === "Choose..."){
-        document.getElementById("error").innerText="Select a role";
+        document.getElementById("errorRole").innerText="Select a role";
         document.getElementById("role").classList.add("is-invalid");
         event.preventDefault();
     }
-    if(username ==='' && pass1 ==='' && pass2 ==='' && role ==='Choose...'){
-        document.getElementById("error").innerText="";
+    else{
+        document.getElementById("errorRole").innerText=""; 
+        document.getElementById("role").classList.remove("is-invalid");
     }
 }
-$("#deleteList").on("click",function () {
-    var name = $("#name").val();
-    var email = $("#email").val();
-    $.ajax({
-        url: 'components/controller.cfc',
-        method: 'post',
-        data: {
-            method:'mailAdd',
-            name: name,
-            email: email
-        },
-        dataType:"json",
-        success: function (response) {
-            if(response.success == true){
-                alert("Successfully subscribed. ");
-                $("#subscribe").prop("disabled", true);
-            }
-        },
-        error: function (xhr, status, error) {
-            console.log("An error occurred : " + error);
-        }
-    });
-})
+function editValidate(){
+    var title = document.getElementById("title").value;
+    var desc = document.getElementById("desc").value;
+    
 
+    if(title === ""){
+        document.getElementById("errorTit").innerText="Enter a title";
+        document.getElementById("title").classList.add("is-invalid");
+        event.preventDefault();
+    }
+    else{
+        document.getElementById("errorTit").innerText=""; 
+        document.getElementById("title").classList.remove("is-invalid");
+    }
+
+    if(desc === ""){
+        document.getElementById("errorDes").innerText="Enter Description";
+        document.getElementById("desc").classList.add("is-invalid");
+        event.preventDefault();
+    }
+    else{
+        document.getElementById("errorDes").innerText=""; 
+        document.getElementById("desc").classList.remove("is-invalid");
+    }
+
+}
