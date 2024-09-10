@@ -47,14 +47,14 @@
     <cffunction name="login" access="public" returntype="any">
       <cfargument name="email" type="string" >
       <cfargument name="password" type="string" >
-      <cfset local.encrypted_pass = Hash(#arguments.password#, 'SHA-512')/>
+      <cfset local.encryptedPass = Hash(#arguments.password#, 'SHA-512')/>
 
       <cfquery name="check" datasource="myDatabase">
         SELECT * FROM userDatas 
         WHERE email = <cfqueryparam value="#arguments.email#"  cfsqltype="cf_sql_varchar">
 
       </cfquery>
-      <cfif check.email EQ arguments.email AND check.password EQ local.encrypted_pass>
+      <cfif check.email EQ arguments.email AND check.password EQ local.encryptedPass>
         <cfif check.role EQ 'User'>
           <cfset session.isLogged =true>
           <cfset session.userName = check.username>
@@ -78,7 +78,7 @@
           class:'text-danger'
         }>
         
-      <cfelseif check.email EQ arguments.email AND check.password NEQ local.encrypted_pass>       
+      <cfelseif check.email EQ arguments.email AND check.password NEQ local.encryptedPass>       
       <cfreturn {
         text:"Incorrect email or password",
         class:'text-danger'

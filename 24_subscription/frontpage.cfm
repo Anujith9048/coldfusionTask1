@@ -11,18 +11,14 @@
 </head>
 <body class="p-5">
   <form class="col-5 mx-auto" action="" method="post">
+    <label for="">Enter your name</label>
     <input class="form-control mt-3" type="text" name="name" id="name" placeholder="Enter your name">
+    <label for="">Enter email</label>
     <input class="form-control mt-3" type="text" name="email" id="email" placeholder="Enter email" >
     <p id="emailStatus"></p>
     <input type="submit" value="Check" id="check" class=" btn-primary mt-3 rounded border-0">
     <input type="button" value="Submit" name="sub" id="subscribe" class=" form-control  mt-3" disabled>
   </form>
-
-  <!--- <cfif structKeyExists(form,"sub")>
-    <cfset local.obj  = createObject("component","components.controller")>
-    <cfset local.result = local.obj.mailAdd(form.name , form.email)>
-    <cfoutput>#local.result#</cfoutput>
-  </cfif> --->
 </body>
 </html>
 
