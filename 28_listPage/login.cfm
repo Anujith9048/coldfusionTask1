@@ -19,7 +19,7 @@
       <h3 class="fw-bolder text-center">Login to <span class="text-primary">Account</span></h3>
       <div class="input-group  mt-4">
         <input type="text" name="email" class="form-control" placeholder="Enter email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+        <span class="input-group-text" id="basic-addon2">@exapmle.com</span>
       </div>
       <div class="input-group mb-3 mt-4">
         <input type="password" name="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="basic-addon2">

@@ -14,7 +14,7 @@
     </cffunction>
 
     <cffunction name="logOut" access="public"  returntype="any">
-        <cfset StructClear(session)>
+        <cfset session.isLog = false>
         <cflocation  url="http://127.0.0.1:8500/TASK/coldfusionTask1/27_login/login.cfm">
     </cffunction>
 

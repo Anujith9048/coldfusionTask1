@@ -12,6 +12,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <script src="script/jquery.js"></script>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
 </head>
 <body class="pb-5">
   <div class="row mx-auto item d-block">
@@ -59,23 +64,23 @@
             <span id="req_20" class="req">*</span>
           </label> <br>
           <span class="">
-            <input id="day" name="day" type="text" class="form-input-box field text" value="" size="2" maxlength="2" tabindex="0" required oninput="moveNext(this , 'month')" />
+            <input id="day" name="day" type="text" class="form-input-box field text" value="" size="2" maxlength="2" required oninput="moveNext(this , 'month')" />
           </span>
           <span class="symbol">/</span>
           <span>
-            <input id="month" name="month" type="text" class="form-input-box field text" value="" size="2" maxlength="2" tabindex="0" oninput="moveNext(this , 'year')" required />
+            <input id="month" name="month" type="text" class="form-input-box field text" value="" size="2" maxlength="2" oninput="moveNext(this , 'year')"/>
           </span>
           <span class="symbol">/</span>
           <span>
-            <input id="year" name="year" type="text" class="form-input-box field text" value="" size="4" maxlength="4" tabindex="0" oninput="moveNext(this , NULL)"/>
+            <input id="year" name="year" type="text" class="form-input-box field text" value="" size="4" maxlength="4" oninput="moveNext(this , 'NULL')" />
           </span>
           <span id="cal20">
-            <img id="datePickerImage" class="calendar" src="https://static.wufoo.com/images/icons/calendar.png" alt="Pick a date." data-date-format="yyyy-mm-dd" data-date="today"/>
+            <input type="date" id="datepicker">
           </span>
           <div class="d-flex justify-content-between label-month">
-            <p for="Fiel m-0">MM</p>
-            <p for="Fiel-2 m-0">DD</p>
-            <p for="Fiel m-0">YYYY</p>
+            <p class="Fiel m-0">DD</p>
+            <p class="Fiel-2 m-0">MM</p>
+            <p class="Fiel m-0">YYYY</p>
           </div>
           <p id="errorp3"></p>
         </div>

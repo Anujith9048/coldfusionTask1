@@ -1,3 +1,4 @@
+<cfif session.isLogged>
 <!DOCTYPE html>
 <cfoutput>
 <html lang="en">
@@ -54,3 +55,6 @@
 </body>
 </html>
 </cfoutput>
+<cfelse>
+    <cflocation  url="login.cfm">>
+</cfif>
